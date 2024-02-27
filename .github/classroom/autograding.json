@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "2b",
+      "setup": "npm install",
+      "run": "npm run test-ticket-2b",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "2c",
+      "setup": "npm install",
+      "run": "npm run test-ticket-2c",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "2d",
+      "setup": "npm install",
+      "run": "npm run test-ticket-2d",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "2e",
+      "setup": "npm install",
+      "run": "npm run test-ticket-2e",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "2f",
+      "setup": "npm install",
+      "run": "npm run test-ticket-2f",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
