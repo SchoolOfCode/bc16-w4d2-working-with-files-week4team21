@@ -16,9 +16,27 @@ export async function getQuotes() {
 	}
 }
 
-getQuotes();
+export async function addQuote(quoteText) {
+	// create quote object
+	const quote = {};
+	// assign an ID
+	quote.id = uuidv4();
+	// read the quotes from the quotes.json
+	try {
+		const data = await readFile(fileName, "utf8");
+		const jsonData = await JSON.parse(data);
+		// assign to object
+		quote.quoteText = quoteText;
+		console.log(quote);
+		// TODO
+		// write to file
+		// return created obj
+	} catch (error) {
+		console.error("Error reading file:", error);
+	}
+}
 
-export async function addQuote(quoteText) {}
+addQuote("smello world");
 
 export async function getRandomQuote() {}
 
