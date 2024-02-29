@@ -6,7 +6,7 @@ const fileName = "quotes.json";
 
 export async function getQuotes() {
 	try {
-		const data = await readFile(fileName, "utf8");
+		const data = await fs.readFile(fileName, "utf8");
 
 		const jsonData = await JSON.parse(data);
 		console.log(jsonData);
@@ -17,26 +17,19 @@ export async function getQuotes() {
 }
 
 export async function addQuote(quoteText) {
-	// create quote object
-	const quote = {};
-	// assign an ID
-	quote.id = uuidv4();
-	// read the quotes from the quotes.json
-	try {
-		const data = await readFile(fileName, "utf8");
-		const jsonData = await JSON.parse(data);
-		// assign to object
-		quote.quoteText = quoteText;
-		console.log(quote);
-		// TODO
-		// write to file
-		// return created obj
-	} catch (error) {
-		console.error("Error reading file:", error);
-	}
-}
+	const data = await fs.readFile(fileName, "utf8");
+	const jsonData = await JSON.parse(data);
 
-addQuote("smello world");
+	const newQuote = {
+		id: uuidv4(),
+		quoteText: quoteText,
+	};
+	jsonData.push(newQuote);
+	console.log(jsonData);
+	await fs.writeFile(fileName, JSON.stringify(jsonData, null, 2), "utf-8");
+
+	return newQuote;
+}
 
 export async function getRandomQuote() {}
 
