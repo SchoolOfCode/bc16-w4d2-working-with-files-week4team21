@@ -29,7 +29,12 @@ export async function addQuote(quoteText) {
 	return quoteObject;
 }
 
-export async function getRandomQuote() {}
+export async function getRandomQuote() {
+	const jsonData = await fs.readFile(fileName, "utf8");
+	const jsArray = JSON.parse(jsonData);
+	const arrayIndex = Math.floor(Math.random()*jsArray.length);
+	return jsArray[arrayIndex];
+}
 
 export async function editQuote(id, quoteText) {}
 
