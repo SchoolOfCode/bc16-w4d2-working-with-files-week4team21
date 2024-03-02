@@ -16,18 +16,7 @@ export async function getQuotes() {
 }
 
 export async function addQuote(quoteText) {
-	const data = await fs.readFile(fileName, "utf8");
-	const jsonData = await JSON.parse(data);
-
-	const newQuote = {
-		id: uuidv4(),
-		quoteText: quoteText,
-	};
-	jsonData.push(newQuote);
-	console.log(jsonData);
-	await fs.writeFile(fileName, JSON.stringify(jsonData, null, 2), "utf-8");
-
-	return newQuote;
+	
 }
 
 export async function getRandomQuote() {}
