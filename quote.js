@@ -36,6 +36,22 @@ export async function getRandomQuote() {
 	return jsArray[arrayIndex];
 }
 
-export async function editQuote(id, quoteText) {}
+export async function editQuote(id, quoteText) {
+	const jsonData = await fs.readFile(fileName, "utf8");
+	const jsArray = JSON.parse(jsonData);
+	let found = false;
+	for (let i=0; i<jsArray.length; i++){
+		if (jsArray[i]["id"]===id){
+			jsArray[i]["quoteText"]=quoteText;
+			found=true;
+			const newJsonData = JSON.stringify(jsArray);
+			await fs.writeFile(fileName, newJsonData, "utf8");
+			return jsArray[i];
+		}
+	}
+	if (!found) {
+		return null;
+	}
+}
 
 export async function deleteQuote(id) {}
