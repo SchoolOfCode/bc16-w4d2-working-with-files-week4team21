@@ -54,4 +54,19 @@ export async function editQuote(id, quoteText) {
 	}
 }
 
-export async function deleteQuote(id) {}
+export async function deleteQuote(id) {
+	const jsonData = await fs.readFile(fileName, "utf8");
+	const jsArray = JSON.parse(jsonData);
+	let found = false;
+	for (let i=0; i<jsArray.length; i++){
+		if(jsArray[i]["id"]===id){
+			const deletedQuote = jsArray.splice(i, 1);
+			const newJsonData = JSON.stringify(jsArray);found = true;
+			await fs.writeFile(fileName, newJsonData, "utf8");
+			return deletedQuote[0];
+		}
+	}
+	if (!found){
+		return null;
+	}
+}
